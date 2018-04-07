@@ -1,7 +1,7 @@
 Sharecropper
 ============
 
-A tool for rapidly creating cropped images with the correct aspect ratio for a WordPress teaser. Using this tool is a three-step process:
+A tool for rapidly creating cropped images with the correct aspect ratio for a Google Slide background. Using this tool is a three-step process:
 
 1. Drag a photo onto the white square in the middle of the screen.
 2. Select a preset aspect ratio from the drop-down on the right, and drag out your crop selection on the image.

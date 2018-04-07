@@ -105,6 +105,7 @@ document.body.addEventListener("drop", function(e) {
   errorOut.innerHTML = "";
   if (!e.dataTransfer || !e.dataTransfer.files) return;
   var f = e.dataTransfer.files[0];
+  state.name = f.name.substring(0, f.name.lastIndexOf('.'));
   var reader = new FileReader();
   reader.onload = function() {
     state.image = new Image();
@@ -144,13 +145,13 @@ var downloadCropped = function() {
     height: state.selection.height / bounds.height * state.image.height
   };
   if (crop.width < width || crop.height < height) {
-    return errorOut.innerHTML = "Crop too small: resulting image will be fuzzy. Please select a larger area or use a bigger source image."
+    errorOut.innerHTML = "The crop is small: resulting image will be fuzzy. Ideally, select a larger area or use a bigger source image."
   }
   offscreen.drawImage(state.image, crop.x, crop.y, crop.width, crop.height, 0, 0, offscreenCanvas.width, offscreenCanvas.height);
   var url = offscreenCanvas.toDataURL("image/jpeg");
   var a = document.createElement("a");
   a.href = url;
-  a.download = "cropped.jpg";
+  a.download = state.name + "-cropped.jpg";
   a.dispatchEvent(new MouseEvent("click"));
 };
 
